@@ -1,0 +1,273 @@
+:root {
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary: #818cf8;
+    --accent: #c084fc;
+    --text-primary: #ffffff;
+    --text-dim: #94a3b8;
+    --bg-deep: #020617;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-deep);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    color: var(--text-primary);
+}
+
+/* Background Blobs */
+.background-blobs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.blob-1 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--primary), transparent);
+    top: -10%;
+    left: -10%;
+}
+
+.blob-2 {
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, var(--accent), transparent);
+    bottom: -10%;
+    right: -10%;
+}
+
+/* Glass Card */
+.payment-wrapper {
+    width: 90%;
+    max-width: 440px;
+    perspective: 1000px;
+}
+
+/* Pure CSS Animations for Reliability */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: scaleIn 0.8s ease-out forwards;
+}
+
+.header, .input-group, .method-badges, .glass-btn, .footer {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.header { animation-delay: 0.2s; }
+.input-group:nth-child(1) { animation-delay: 0.3s; }
+.input-group:nth-child(2) { animation-delay: 0.4s; }
+.method-badges { animation-delay: 0.5s; }
+.glass-btn { animation-delay: 0.6s; }
+.footer { animation-delay: 0.7s; }
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.brand {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+}
+
+.brand span {
+    color: var(--primary);
+}
+
+.tagline {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.price-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-input span {
+    position: absolute;
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px 20px;
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.price-input input {
+    padding-left: 50px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+input:focus {
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.1);
+}
+
+/* Badges */
+.method-badges {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    justify-content: center;
+}
+
+.method-badges span {
+    font-size: 0.65rem;
+    padding: 6px 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    color: var(--text-dim);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Button */
+.glass-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 20px -5px rgba(129, 140, 248, 0.4);
+    opacity: 1; /* Explicitly visible */
+    visibility: visible;
+}
+
+.glass-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 30px -10px rgba(129, 140, 248, 0.5);
+}
+
+.glass-btn:active {
+    transform: scale(0.98);
+}
+
+.glass-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.footer {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+/* Status Overlays (Simplified) */
+.status-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.hidden { display: none; }
+
+.status-content { text-align: center; }
+.status-icon { font-size: 4rem; margin-bottom: 16px; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn-loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: none;
+    animation: spin 0.8s linear infinite;
+}

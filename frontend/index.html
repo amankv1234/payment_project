@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleekPay | Secure UPI Payments</title>
+    <meta name="description" content="Fast, secure, and modern UPI payment gateway integration demo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="payment-wrapper">
+        <div class="glass-card">
+            <header class="header">
+                <h1 class="brand">Sleek<span>Pay</span></h1>
+                <p class="tagline">Next-gen Secure Payments</p>
+            </header>
+
+            <div class="payment-form">
+                <div class="input-group">
+                    <label>Amount (INR)</label>
+                    <div class="price-input">
+                        <span>₹</span>
+                        <input type="number" id="amount" placeholder="500.00" min="1">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>UPI ID (Optional)</label>
+                    <input type="text" id="upi-id" placeholder="user@bank" class="minimal-input">
+                </div>
+
+                <div class="method-badges">
+                    <span>UPI</span>
+                    <span>CARDS</span>
+                    <span>NETBANKING</span>
+                </div>
+
+                <button id="pay-button" class="glass-btn">
+                    <span class="btn-text">Proceed to Pay</span>
+                    <div class="btn-loader"></div>
+                </button>
+            </div>
+
+            <footer class="footer">
+                <p>🔒 PCI-DSS Compliant Encryption</p>
+            </footer>
+        </div>
+
+        <div id="status-overlay" class="status-overlay hidden">
+            <div class="status-content">
+                <div id="status-icon" class="status-icon"></div>
+                <h2 id="status-title">Processing...</h2>
+                <p id="status-message">Please wait while we secure your payment.</p>
+                <button id="close-status" class="secondary-btn hidden">Back to Payment</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
